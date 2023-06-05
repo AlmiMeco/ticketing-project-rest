@@ -58,11 +58,13 @@ public class ProjectController {
 //----------------------------------------------------------------------------------------------------------------------
 
     @GetMapping("/manager/project-status")
+    @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> getProjectByManager(){
         return ResponseEntity.ok(new ResponseWrapper("dd", projectService.listAllProjectDetails(), HttpStatus.OK));
     }
 
     @PutMapping("/manager/complete/{projectCode}")
+    @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> managerCompleteProject(@PathVariable("projectCode") String projectCode){
         return ResponseEntity.ok(new ResponseWrapper("Project Is Successfully Completed", HttpStatus.OK));
     }
