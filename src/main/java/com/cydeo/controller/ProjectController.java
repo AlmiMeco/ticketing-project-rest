@@ -4,6 +4,7 @@ import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.service.ProjectService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RestController
 @RequestMapping("/api/v1/project")
+@Tag(name = "ProjectController", description = "Project API")
 public class ProjectController {
 
     private final ProjectService projectService;

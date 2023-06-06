@@ -4,6 +4,7 @@ import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.enums.Status;
 import com.cydeo.service.TaskService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RestController
 @RequestMapping("/api/v1/task")
+@Tag(name = "TaskController", description = "Task API")
 public class TaskController {
 
     private final TaskService taskService;
