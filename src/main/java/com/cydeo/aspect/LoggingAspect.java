@@ -2,9 +2,7 @@ package com.cydeo.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.keycloak.adapters.springsecurity.account.SimpleKeycloakAccount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,5 +35,14 @@ public class LoggingAspect {
         ,joinPoint.getSignature().toShortString()
         ,getUserName());
     }
+
+    @AfterReturning(pointcut = "ProjectAndTaskPointCut()", returning = "result")
+    public void afterProjectAndTaskAdvice(JoinPoint joinPoint, Object result){
+        log.info("After -> Method: {}, User: {}, Result: {} "
+                ,joinPoint.getSignature().toShortString()
+                ,getUserName()
+                ,result.toString());
+    }
+
 
 }
