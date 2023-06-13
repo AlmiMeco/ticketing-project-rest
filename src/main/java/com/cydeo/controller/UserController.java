@@ -2,6 +2,7 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.exception.TicketingProjectRestException;
 import com.cydeo.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -57,7 +58,7 @@ public class UserController {
     @DeleteMapping("/{userName}")
     @RolesAllowed("Admin")
     @Operation(summary = "DELETE - USER")
-    public ResponseEntity<ResponseWrapper> deleteUser(@PathVariable("userName") String userName){
+    public ResponseEntity<ResponseWrapper> deleteUser(@PathVariable("userName") String userName) throws TicketingProjectRestException {
         userService.delete(userName);
         return ResponseEntity.ok(new ResponseWrapper("User -> " + userName + " <- Deleted", HttpStatus.OK));
     }
