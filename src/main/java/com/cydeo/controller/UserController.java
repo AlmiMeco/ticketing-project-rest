@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.annotation.ExecutionTime;
 import com.cydeo.dto.ResponseWrapper;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.exception.TicketingProjectRestException;
@@ -28,6 +29,7 @@ public class UserController {
     @GetMapping()
     @RolesAllowed({"Manager","Admin"})
     @Operation(summary = "GET - ALL USERS")
+    @ExecutionTime // <- Custom Annotation used to Log ExecutionTime of method (AOP)
     public ResponseEntity<ResponseWrapper> getUsers(){
         return ResponseEntity.ok(new ResponseWrapper("ALL Users Retrieved", userService.listAllUsers(), HttpStatus.OK));
     }
